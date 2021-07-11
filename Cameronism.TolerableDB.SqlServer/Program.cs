@@ -9,16 +9,16 @@ namespace Cameronism.TolerableDB.SqlServer
     {
         private class Options
         {
-            [Option('c', Required = true, HelpText = "Connection string of database to introspect")]
+            [Option('c', "connection", Required = true, HelpText = "Connection string of database to introspect")]
             public string ConnectionString { get; set; }
 
-            [Option('d', Required = true, HelpText = "Destination folder for generated files")]
+            [Option('d', "directory", Required = true, HelpText = "Destination folder for generated files")]
             public DirectoryInfo Directory { get; set; }
 
-            [Option('n', Required = false, HelpText = "Namespace for generated files")]
+            [Option('n', "namespace", Required = false, HelpText = "Namespace for generated files")]
             public string Namespace { get; set; }
 
-            [Option('e', Required = false, HelpText = "Generate warnings or errors for problems")]
+            [Option('e', "generateErrors", Required = false, HelpText = "Generate warnings or errors for problems")]
             public bool? GenerateErrors { get; set; }
         }
 
@@ -35,7 +35,6 @@ namespace Cameronism.TolerableDB.SqlServer
             if (options.GenerateErrors is bool errors)
             {
                 builder.ErrorOnDescribeResultFail = errors;
-
             }
             await builder.VisitAsync();
         }
