@@ -7,7 +7,7 @@ Goals:
 Really not an ORM, this strives to be a non-leaky abstraction for stored procedures in SQL Server including all table valued parameters, output parameters and multiple result sets.  The resulting types and namespaces are not idiomatic C# / .NET but the generated code uses partial classes to allow hand written code (e.g. additional interfaces) to simplify access from .NET. 
 
 Includes:
-- [Visitor base class](./Cameronism.TolerableDB.SqlServer/StoredProcedureVisitor.cs) for all stored procedures in a SQL Server 
+- [Visitor base class](./Cameronism.TolerableDB.SqlServer/StoredProcedureVisitor.cs) to enumerate all stored procedures, parameters, table valued parameters, and result sets in a SQL Server 
 - [Visitor implementation](./Cameronism.TolerableDB.SqlServer/InsightInterfaceBuilder.cs) that generates [interfaces for Insight.Database](https://github.com/jonwagner/Insight.Database/wiki/Auto-Interface-Implementation)
 - Command line interface for :point_up:
 
@@ -38,7 +38,7 @@ Example output:
 
 
 
-## Comand line interface
+## Comand Line Interface
 
 ```
 $ Cameronism.TolerableDB.SqlServer.exe --help
@@ -51,10 +51,10 @@ $ Cameronism.TolerableDB.SqlServer.exe --help
 
 Usage:
 ```
-$ Cameronism.TolerableDB.SqlServer.exe 
-  --connection "your connection string"
-  --directory C:\your\destination
-  --namespace Your.Namespace
+$ Cameronism.TolerableDB.SqlServer.exe \
+  --connection "your connection string" \
+  --directory C:\your\destination \
+  --namespace Your.Namespace \
   --generateErrors false
 ```
 
@@ -63,7 +63,7 @@ $ Cameronism.TolerableDB.SqlServer.exe
 Pre-alpha.  Works on my machine
 
 
-## Nest Steps
+## Next Steps
 
 - [ ] Dog fooding.  Use generator instead of
   [hand](./Cameronism.TolerableDB.SqlServer/StoredProcedureParameterInfo.cs) 
